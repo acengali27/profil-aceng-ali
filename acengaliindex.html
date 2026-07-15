@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aceng Ali - Digital Marketing & Fundraising</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    --green-dark: #2d4a32;
+    --green: #3f6b3b;
+    --green-light: #eaf2e6;
+    --terracotta: #b5651d;
+    --cream: #f3efe6;
+    --card: #ffffff;
+    --text: #2c2c2c;
+    --muted: #6b6b6b;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 0 60px;
+    position: relative;
+  }
+
+  .aap-container { max-width: 480px; margin: 0 auto; padding: 0 20px; }
+
+  .aap-float-btn {
+    position: fixed; top: 20px; right: 20px; background: #ffffff; color: var(--green-dark);
+    border-radius: 999px; padding: 10px 18px; font-weight: 600; font-size: 14px;
+    text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    display: inline-flex; align-items: center; gap: 6px; z-index: 50;
+  }
+  .aap-wa-icon { color: #25D366; }
+
+  .aap-header { text-align: center; padding-top: 40px; }
+  .aap-avatar-wrap { position: relative; width: 140px; height: 140px; margin: 0 auto 20px; }
+  .aap-avatar {
+    width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
+    border: 5px solid #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.08); display: block;
+  }
+  .aap-status-dot {
+    position: absolute; bottom: 8px; right: 8px; width: 18px; height: 18px;
+    background: #3fb950; border-radius: 50%; border: 3px solid #fff;
+  }
+
+  .aap-name { font-size: 30px; font-weight: 800; color: var(--green-dark); margin: 0 0 8px; }
+  .aap-title { color: var(--terracotta); font-weight: 700; font-size: 15px; margin: 0 0 10px; line-height: 1.4; }
+  .aap-location { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  .aap-bio { color: var(--text); font-size: 14.5px; line-height: 1.6; margin: 0 0 24px; }
+
+  .aap-cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: linear-gradient(180deg, #4b7d46, #33552f);
+    color: #fff; text-decoration: none; font-weight: 700; font-size: 15px;
+    padding: 15px 26px; border-radius: 999px; box-shadow: 0 8px 18px rgba(51,85,47,0.3);
+    width: 100%;
+  }
+
+  .aap-section { margin-top: 34px; }
+  .aap-section-title {
+    text-align: center; font-size: 18px; font-weight: 800; color: #1f1f1f;
+    display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 0 16px;
+  }
+
+  .aap-chevron { margin-left: auto; color: #9a9a9a; font-size: 18px; }
+
+  .aap-list { display: flex; flex-direction: column; gap: 12px; }
+  .aap-list-item {
+    display: flex; align-items: center; gap: 14px; background: var(--card);
+    text-decoration: none; color: var(--text); padding: 16px 18px; border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-weight: 600; font-size: 14.5px;
+  }
+  .aap-list-icon { font-size: 20px; }
+
+  .aap-grid5 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .aap-grid-card {
+    background: var(--card); border-radius: 16px; text-decoration: none; color: var(--text);
+    padding: 20px 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .aap-grid-icon { font-size: 26px; }
+  .aap-grid-label { font-size: 12.5px; font-weight: 700; line-height: 1.3; }
+
+  .aap-see-all {
+    display: block; text-align: center; margin-top: 14px; color: var(--green);
+    font-weight: 700; font-size: 14px; text-decoration: none;
+  }
+
+  .aap-results-card {
+    background: var(--card); border-radius: 18px; padding: 22px 10px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 22px 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .aap-result { text-align: center; }
+  .aap-result-value { font-size: 19px; font-weight: 800; color: var(--green-dark); margin-bottom: 4px; }
+  .aap-result-label { font-size: 12.5px; color: var(--muted); }
+
+  .aap-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .aap-resource-card {
+    background: var(--card); border-radius: 16px; text-decoration: none; color: var(--text);
+    padding: 16px 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700;
+  }
+  .aap-resource-icon { font-size: 22px; }
+
+  .aap-grid4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .aap-tool-card {
+    background: var(--card); border-radius: 16px; padding: 18px 10px; text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .aap-tool-badge {
+    width: 34px; height: 34px; border-radius: 8px; color: #fff; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+  }
+  .aap-tool-name { font-weight: 700; font-size: 13.5px; }
+  .aap-tool-sub { font-size: 11px; color: var(--green); font-weight: 700; }
+
+  .aap-grid6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .aap-social-card {
+    background: var(--card); border-radius: 16px; text-decoration: none; color: var(--text);
+    padding: 16px 6px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .aap-social-icon {
+    width: 34px; height: 34px; border-radius: 50%; background: var(--green-light);
+    display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800;
+  }
+  .aap-social-label { font-size: 12px; font-weight: 700; }
+
+  .aap-partners {
+    margin-top: 34px; background: #ece2d6; border-radius: 16px; padding: 16px 18px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px;
+  }
+  .aap-partners-label { font-weight: 800; color: var(--terracotta); font-size: 13px; white-space: nowrap; }
+  .aap-partners-list { display: flex; flex-wrap: wrap; gap: 14px; }
+  .aap-partner-item { font-size: 12px; font-weight: 700; color: var(--green-dark); }
+
+  .aap-footer { text-align: center; margin-top: 30px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+
+  @media (max-width: 380px) {
+    .aap-grid5, .aap-grid6 { grid-template-columns: repeat(3, 1fr); }
+    .aap-name { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Floating contact button -->
+  <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="aap-float-btn">
+    <span class="aap-wa-icon">☎</span> Hubungi Saya
+  </a>
+
+  <div class="aap-container">
+
+    <!-- Header / Profile -->
+    <header class="aap-header">
+      <div class="aap-avatar-wrap">
+        <img src="https://placehold.co/200x200/e8d9c5/6b4a2f?text=Foto" alt="Aceng Ali" class="aap-avatar" />
+        <span class="aap-status-dot"></span>
+      </div>
+      <h1 class="aap-name">Aceng Ali</h1>
+      <p class="aap-title">Digital Marketing • Digital Fundraising Website Developer</p>
+      <p class="aap-location">📍 Bandung, Indonesia</p>
+      <p class="aap-bio">Membantu bisnis, yayasan, masjid, pesantren, dan UMKM membangun website, meningkatkan fundraising, dan mengembangkan digital marketing.</p>
+
+      <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="aap-cta">
+        ☎ Konsultasi Gratis via WhatsApp <span class="aap-chevron">›</span>
+      </a>
+    </header>
+
+    <!-- Jasa Saya -->
+    <section class="aap-section">
+      <h2 class="aap-section-title">💼 Jasa Saya</h2>
+      <div class="aap-list">
+        <a href="#" class="aap-list-item"><span class="aap-list-icon">🌐</span><span>Jasa Pembuatan Website</span><span class="aap-chevron">›</span></a>
+        <a href="#" class="aap-list-item"><span class="aap-list-icon">📈</span><span>Meta Ads & Google Ads</span><span class="aap-chevron">›</span></a>
+        <a href="#" class="aap-list-item"><span class="aap-list-icon">🤖</span><span>AI Automation WhatsApp</span><span class="aap-chevron">›</span></a>
+        <a href="#" class="aap-list-item"><span class="aap-list-icon">🖥️</span><span>Landing Page Donasi</span><span class="aap-chevron">›</span></a>
+        <a href="#" class="aap-list-item"><span class="aap-list-icon">🗄️</span><span>Dashboard Donatur</span><span class="aap-chevron">›</span></a>
+      </div>
+    </section>
+
+    <!-- Portofolio -->
+    <section class="aap-section">
+      <h2 class="aap-section-title">📁 Portofolio</h2>
+      <div class="aap-grid5">
+        <a href="#" class="aap-grid-card"><span class="aap-grid-icon">🤲</span><span class="aap-grid-label">Website Yayasan</span></a>
+        <a href="#" class="aap-grid-card"><span class="aap-grid-icon">🕌</span><span class="aap-grid-label">Website Masjid</span></a>
+        <a href="#" class="aap-grid-card"><span class="aap-grid-icon">🎓</span><span class="aap-grid-label">Website Pesantren</span></a>
+        <a href="#" class="aap-grid-card"><span class="aap-grid-icon">💳</span><span class="aap-grid-label">Landing Page Donasi</span></a>
+        <a href="#" class="aap-grid-card"><span class="aap-grid-icon">📊</span><span class="aap-grid-label">Dashboard Donatur</span></a>
+      </div>
+      <a href="#" class="aap-see-all">Lihat Semua Portofolio ›</a>
+    </section>
+
+    <!-- Hasil yang Pernah Dicapai -->
+    <section class="aap-section">
+      <h2 class="aap-section-title">🏆 Hasil yang Pernah Dicapai</h2>
+      <div class="aap-results-card">
+        <div class="aap-result"><div class="aap-result-value">Rp12 Miliar+</div><div class="aap-result-label">Digital Fundraising Terkelola</div></div>
+        <div class="aap-result"><div class="aap-result-value">300+</div><div class="aap-result-label">Campaign Digital</div></div>
+        <div class="aap-result"><div class="aap-result-value">20.000+</div><div class="aap-result-label">Transaksi Donasi</div></div>
+        <div class="aap-result"><div class="aap-result-value">5+ Tahun</div><div class="aap-result-label">Pengalaman di Bidang Digital</div></div>
+      </div>
+    </section>
+
+    <!-- Free Resources -->
+    <section class="aap-section">
+      <h2 class="aap-section-title">🎁 Free Resources</h2>
+      <div class="aap-grid3">
+        <a href="#" class="aap-resource-card"><span class="aap-resource-icon">📄</span><span>Template Landing Page</span></a>
+        <a href="#" class="aap-resource-card"><span class="aap-resource-icon">📖</span><span>Ebook Digital Marketing</span></a>
+        <a href="#" class="aap-resource-card"><span class="aap-resource-icon">✅</span><span>Checklist Meta Ads</span></a>
+      </div>
+    </section>
+
+    <!-- Tools Favorit -->
+    <section class="aap-section">
+      <h2 class="aap-section-title">⭐ Tools Favorit</h2>
+      <div class="aap-grid4">
+        <div class="aap-tool-card"><div class="aap-tool-badge" style="background:#673de6">H</div><div class="aap-tool-name">Hostinger</div><div class="aap-tool-sub">Affiliate</div></div>
+        <div class="aap-tool-card"><div class="aap-tool-badge" style="background:#00c4cc">C</div><div class="aap-tool-name">Canva Pro</div></div>
+        <div class="aap-tool-card"><div class="aap-tool-badge" style="background:#10a37f">C</div><div class="aap-tool-name">ChatGPT</div></div>
+        <div class="aap-tool-card"><div class="aap-tool-badge" style="background:#000000">C</div><div class="aap-tool-name">CapCut</div></div>
+      </div>
+    </section>
+
+    <!-- Social Media -->
+    <section class="aap-section">
+      <h2 class="aap-section-title">🔗 Social Media</h2>
+      <div class="aap-grid6">
+        <a href="#" target="_blank" class="aap-social-card"><span class="aap-social-icon">📷</span><span class="aap-social-label">Instagram</span></a>
+        <a href="#" target="_blank" class="aap-social-card"><span class="aap-social-icon">in</span><span class="aap-social-label">LinkedIn</span></a>
+        <a href="#" target="_blank" class="aap-social-card"><span class="aap-social-icon">🎵</span><span class="aap-social-label">TikTok</span></a>
+        <a href="#" target="_blank" class="aap-social-card"><span class="aap-social-icon">▶️</span><span class="aap-social-label">YouTube</span></a>
+        <a href="#" target="_blank" class="aap-social-card"><span class="aap-social-icon">f</span><span class="aap-social-label">Facebook</span></a>
+        <a href="#" target="_blank" class="aap-social-card"><span class="aap-social-icon">@</span><span class="aap-social-label">Threads</span></a>
+      </div>
+    </section>
+
+    <!-- Partners -->
+    <div class="aap-partners">
+      <span class="aap-partners-label">🤝 Bekerja Sama Dengan</span>
+      <div class="aap-partners-list">
+        <span class="aap-partner-item">BMM</span>
+        <span class="aap-partner-item">PESANTREN ROBITOH</span>
+        <span class="aap-partner-item">MASJID ALHUDA</span>
+        <span class="aap-partner-item">& Banyak Lainnya</span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="aap-footer">
+      <p>© 2026 Aceng Ali. All rights reserved.</p>
+      <p>dibuat dengan ❤ dan niat baik</p>
+    </footer>
+
+  </div>
+</body>
+</html>
